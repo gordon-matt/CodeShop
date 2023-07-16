@@ -1,3 +1,5 @@
+<img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Logo.png" alt="Logo" />
+
 Code Shop
 ==============
 
@@ -5,10 +7,10 @@ Code Shop is a database centric template based code generator for any text(ascii
 
 ## Screenshots
 #### Simple Template:
-<img src="https://github.com/gordon-matt/CodeShop/blob/master/Misc/Screenshots/Simple.PNG" alt="Simple Template" />
+<img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Screenshots/Simple.PNG" alt="Simple Template" />
 
 #### Results:
-<img src="https://github.com/gordon-matt/CodeShop/blob/master/Misc/Screenshots/Simple_Results.PNG" alt="Simple Template Results" />
+<img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Screenshots/Simple_Results.PNG" alt="Simple Template Results" />
 
 ## Documentation
 ### Database
