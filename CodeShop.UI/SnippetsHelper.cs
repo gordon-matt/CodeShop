@@ -9,23 +9,38 @@ public static class SnippetsHelper
 
     static SnippetsHelper()
     {
-        Snippets.Add("{DATABASE.NAME…", "DATABASE.NAME CAMEL|PASCAL|HUMAN|UNDERSCORE|UPPER|LOWER|HYPHEN|HYPHEN_LOWER|HYPHEN_UPPER".DelimeterWrap());
-        Snippets.Add("{DATABASE.TABLES…", "DATABASE.TABLES".DelimeterWrap() + "/DATABASE.TABLES".DelimeterWrap());
+        Snippets.Add("Database Name", "{{ Database.Name }}");
+        Snippets.Add("Tables", "{% for table in Database.Tables %}[Your Code Here]{% endfor %}");
 
-        Snippets.Add("{TABLE.SCHEMA…", "TABLE.SCHEMA".DelimeterWrap());
-        Snippets.Add("{TABLE.NAME…", "TABLE.NAME CAMEL|PASCAL|HUMAN|UNDERSCORE|UPPER|LOWER|HYPHEN|HYPHEN_LOWER|HYPHEN_UPPER".DelimeterWrap());
-        Snippets.Add("{TABLE.NAME.REPLACE…", "TABLE.NAME.REPLACE(OldValue,NewValue)".DelimeterWrap());
-        Snippets.Add("{TABLE.COLUMNS…", "TABLE.COLUMNS PRIMARY|NOPRIMARY".DelimeterWrap() + "/TABLE.COLUMNS".DelimeterWrap());
+        Snippets.Add("Table Schema", "{{ table.Schema }}");
+        Snippets.Add("Table Name", "{{ table.Name | PASCAL }}");
+        Snippets.Add("Table Name (REPLACE)", @"{{ table.Name | REPLACE: ""OldValue"",""NewValue"" }}");
+        Snippets.Add("Columns", "{% for column in table.Columns %}[Your Code Here]{% endfor %}");
 
-        Snippets.Add("{COLUMN.NAME…", "COLUMN.NAME CAMEL|PASCAL|HUMAN|UNDERSCORE|UPPER|LOWER|HYPHEN|HYPHEN_LOWER|HYPHEN_UPPER".DelimeterWrap());
-        Snippets.Add("{COLUMN.TYPE…", "COLUMN.TYPE".DelimeterWrap());
-        Snippets.Add("{MAP COLUMN.TYPE…", "MAP COLUMN.TYPE".DelimeterWrap());
-        Snippets.Add("{COLUMN.LENGTH…", "COLUMN.LENGTH".DelimeterWrap());
-        Snippets.Add("{COLUMN.DEFAULT…", "COLUMN.DEFAULT".DelimeterWrap());
+        Snippets.Add("[Selected] Table Schema", "{{ SelectedTable.Schema }}");
+        Snippets.Add("[Selected] Table Name", "{{ SelectedTable.Name | PASCAL }}");
+        Snippets.Add("[Selected] Table Name (REPLACE)", @"{{ SelectedTable.Name | REPLACE: ""OldValue"",""NewValue"" }}");
+        Snippets.Add("[Selected] Table Columns", "{% for column in SelectedTable.Columns %}[Your Code Here]{% endfor %}");
 
-        Snippets.Add("{IF COLUMN.NAME…", "IF COLUMN.NAME =~|!~ 'text'".DelimeterWrap() + "/IF".DelimeterWrap());
-        Snippets.Add("{IF COLUMN.TYPE…", "IF COLUMN.TYPE EQ|NE ''".DelimeterWrap() + "/IF".DelimeterWrap());
-        Snippets.Add("{IF COLUMN.NULLABLE…", "IF NOT COLUMN.NULLABLE".DelimeterWrap() + "/IF".DelimeterWrap());
-        Snippets.Add("{IF LAST…", "IF NOT LAST".DelimeterWrap() + "/IF".DelimeterWrap());
+        Snippets.Add("Column Name", "{{ column.Name | SINGULARIZE | PASCAL }}");
+        Snippets.Add("Column Type", "{{ column.NativeType }}");
+        Snippets.Add("Mapped Column Type", "{{ column.DbType | MAP_TYPE }}");
+        Snippets.Add("Column Length", "{{ column.Length }}");
+        Snippets.Add("Column Default", "{{ column.Default }}");
+        Snippets.Add("Is Column Nullable?", "{% if column.Nullable %}[Your Code Here]{% endif %}");
+        Snippets.Add("Is Column Primary Key?", "{% if column.IsPrimaryKey %}[Your Code Here]{% endif %}");
+
+        Snippets.Add("If Column Name…", @"{% if column.Name == ""Foo"" %}[Your Code Here]{% endif %}");
+        Snippets.Add("Unless Column Name…", @"{% unless column.Name == ""Foo"" %}[Your Code Here]{% endunless %}");
+
+        Snippets.Add("If Column Type…", @"{% if column.NativeType == ""Foo"" %}[Your Code Here]{% endif %}");
+        Snippets.Add("Unless Column Type…", @"{% unless column.NativeType == ""Foo"" %}[Your Code Here]{% endunless %}");
+
+        Snippets.Add("Is Last Column?",
+@"{% for column in table.Columns %}
+    {{ forloop.index }}. {{ column.Name }}{% unless forloop.last %},{% endunless %}
+{% endfor %}");
+
+        Snippets.Add("Custom Value", @"{{ CustomValues[""MyKey""] }}");
     }
 }

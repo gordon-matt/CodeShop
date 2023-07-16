@@ -1,72 +1,38 @@
+﻿using CodeShop.Shared.Extensions;
+using CodeShop.Shared.Generator;
+using Fluid;
+
 namespace CodeShop.Generator;
 
 public class Client
 {
-    private readonly Context context;
+    private static readonly FluidParser parser;
+    private static readonly TemplateOptions templateOptions;
 
-    public Client()
+    static Client()
     {
-        context = new Context();
+        parser = new FluidParser();
+        templateOptions = new TemplateOptions();
+        templateOptions.MemberAccessStrategy.Register<Database>();
+        templateOptions.MemberAccessStrategy.Register<Table>();
+        templateOptions.MemberAccessStrategy.Register<Column>();
+        templateOptions.Filters.AddCustomFilters();
     }
 
     public event EventHandler OnComplete;
 
-    public IDictionary<string, string> CustomValues { get; set; }
-
-    public Table Table { get; set; }
-
-    public string Parse()
+    public string Parse(TemplateModel model, string inputString)
     {
-        string result = Intrepret();
-        OnComplete?.Invoke(this, new EventArgs());
-        return result;
-    }
-
-    public string Parse(Table table, string inputString)
-    {
-        Table = table;
-        context.Input = inputString;
-        string result = Intrepret();
-        OnComplete?.Invoke(this, new EventArgs());
-        return result;
-    }
-
-    private string Intrepret()
-    {
-        var parser = new Parser(Table);
-
-        var columnsExpression = new ColumnsExpression();
-        columnsExpression.AddExpression(new ColumnIfTypeExpression());
-        columnsExpression.AddExpression(new ColumnIfMapTypeExpression());
-        columnsExpression.AddExpression(new ColumnNameExpression());
-        columnsExpression.AddExpression(new ColumnTypeExpression());
-        columnsExpression.AddExpression(new ColumnLengthExpression());
-        columnsExpression.AddExpression(new ColumnDefaultExpression());
-        columnsExpression.AddExpression(new ColumnMapTypeExpression());
-        columnsExpression.AddExpression(new ColumnIfExpression());
-        columnsExpression.AddExpression(new ColumnIfNullableExpression());
-        columnsExpression.AddExpression(new ColumnNameMatchesExpression());
-        parser.AddExpression(columnsExpression);
-
-        var tablesExpression = new TablesExpression();
-        tablesExpression.AddExpression(new TableNameExpression());
-        tablesExpression.AddExpression(new TableSchemaExpression());
-        tablesExpression.AddExpression(new DatabaseNameExpression());
-        parser.AddExpression(tablesExpression);
-
-        parser.AddExpression(new TableNameExpression());
-        parser.AddExpression(new TableSchemaExpression());
-        parser.AddExpression(new DatabaseNameExpression());
-
-        if (CustomValues != null)
+        if (parser.TryParse(inputString, out var template, out string error))
         {
-            foreach (var entry in CustomValues)
-            {
-                parser.AddExpression(new LiteralExpression(entry.Key, entry.Value));
-            }
+            var context = new TemplateContext(model, templateOptions);
+            string result = template.Render(context);
+            OnComplete?.Invoke(this, new EventArgs());
+            return result;
         }
-
-        parser.Interpret(context);
-        return context.Output;
+        else
+        {
+            throw new ApplicationException("Unable to parse the template. Please check and fix any errors.");
+        }
     }
 }

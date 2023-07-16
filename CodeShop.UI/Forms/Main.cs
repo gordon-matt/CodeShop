@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using CodeShop.Generator;
+using CodeShop.Shared.Generator;
 
 namespace CodeShop.UI;
 
@@ -135,8 +136,14 @@ public partial class Main : KryptonForm
             }
 
             EnsureResultsFormExists();
-            var client = new Client { CustomValues = CustomValuesControl.CustomValues };
-            resultForm.ContentText = client.Parse(selectedTable, templateForm.ContentText);
+            var client = new Client();
+            var model = new TemplateModel
+            {
+                Database = selectedTable.ParentDatabase,
+                SelectedTable = selectedTable,
+                CustomValues = CustomValuesControl.CustomValues,
+            };
+            resultForm.ContentText = client.Parse(model, templateForm.ContentText);
             workspace.SelectPage(resultPage.UniqueName);
         }
         catch (Exception x)
@@ -157,9 +164,14 @@ public partial class Main : KryptonForm
             try
             {
                 var fileGenerator = new FileGenerator();
+                var model = new TemplateModel
+                {
+                    Database = selectedTable.ParentDatabase,
+                    SelectedTable = selectedTable,
+                    CustomValues = CustomValuesControl.CustomValues,
+                };
                 fileGenerator.OnComplete += fileGenerator_OnComplete;
-                fileGenerator.CustomValues = CustomValuesControl.CustomValues;
-                fileGenerator.Generate(selectedTable, inputTemplateFolder, outputTemplateFolder);
+                fileGenerator.Generate(model, inputTemplateFolder, outputTemplateFolder);
             }
             catch (Exception x)
             {

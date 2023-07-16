@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.IO;
+using CodeShop.Shared.Generator;
 
 namespace CodeShop.Generator;
 
@@ -10,16 +11,9 @@ public class FileGenerator
 {
     public event EventHandler OnComplete;
 
-    public IDictionary<string, string> CustomValues { get; set; }
-
-    public void Generate(Table table, string inputDir, string outputDir)
+    public void Generate(TemplateModel model, string inputDir, string outputDir)
     {
         var client = new Client();
-
-        if (CustomValues != null)
-        {
-            client.CustomValues = CustomValues;
-        }
 
         var directoryInfo = new DirectoryInfo(inputDir);
         foreach (var fileInfo in directoryInfo.GetFiles())
@@ -31,8 +25,8 @@ public class FileGenerator
                 streamReader.Close();
             }
 
-            string generatedCode = client.Parse(table, fileContent);
-            string fileName = client.Parse(table, fileInfo.Name);
+            string generatedCode = client.Parse(model, fileContent);
+            string fileName = client.Parse(model, fileInfo.Name);
 
             try
             {
