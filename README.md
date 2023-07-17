@@ -12,146 +12,152 @@ Code Shop is a database centric template based code generator for any text(ascii
 #### Results:
 <img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Screenshots/Simple_Results.PNG" alt="Simple Template Results" />
 
-## Documentation
-### Database
+Documentation
+# Intro
 
-- **{DATABASE.NAME}**
-Placeholder for the database name.
-- **{DATABASE.TABLES}…{/DATABASE.TABLES}**
-Placeholder for the tables. Only used for iterating tables. Attempting to further iterate by columns will not work as you may expect.
+Code Shop makes use of an open-source .NET template engine called [Fluid](https://github.com/sebastienros/fluid), which is based on the [Liquid template language](https://shopify.github.io/liquid/).
 
-### Table
+As such, you can use all the filters (functions), operators, control flow tags and so forth that are specified in the documentation linked above.
 
-- **{TABLE.SCHEMA}**
-Placeholder for the table schema.
-- **{TABLE.NAME}**
-Placeholder for the table name.
-- **{TABLE.COLUMNS}…{/TABLE.COLUMNS}**
-Placeholder for the columns. Possible attributes are: PRIMARY, NOPRIMARY or ALL (default) to filter which columns to process.
+All that you as a user needs to know then is what the model looks like, so that you can create code for your selected database table(s).
 
-### Columns
+When you click, “Generate”, data representing your selected table and its parent database is passed to the templating engine which is structured as follows:
 
-- **{COLUMN.NAME}**
-Placeholder for the column's name.
-- **{COLUMN.TYPE}**
-Placeholder for the column's type.
-- **{MAP COLUMN.TYPE}**
-Placeholder for the selected programming language's data type mapped from the source database type. Configurable in the Config.js file.
-- **{COLUMN.LENGTH}**
-Placeholder for the column's length.
-- **{COLUMN.DEFAULT}**
-Placeholder for the column's default value.
+<table><tr><th colspan="1" rowspan="14" valign="top"><b>Database</b></th><th colspan="1" valign="top">Name</th><th colspan="1" valign="top"></th><th colspan="1" valign="top"></th></tr>
+<tr><td colspan="1" rowspan="12" valign="top">Tables</td><td colspan="1" valign="top">Schema</td><td colspan="1" valign="top"></td></tr>
+<tr><td colspan="1" valign="top">Name</td><td colspan="1" valign="top"></td></tr>
+<tr><td colspan="1" rowspan="7" valign="top">Columns</td><td colspan="1" valign="top">Name</td></tr>
+<tr><td colspan="1" valign="top">NativeType</td></tr>
+<tr><td colspan="1" valign="top">DbType</td></tr>
+<tr><td colspan="1" valign="top">IsPrimaryKey</td></tr>
+<tr><td colspan="1" valign="top">Length</td></tr>
+<tr><td colspan="1" valign="top">Nullable</td></tr>
+<tr><td colspan="1" valign="top">Default</td></tr>
+<tr><td colspan="1" rowspan="3" valign="top">Keys</td><td colspan="1" valign="top">Name</td></tr>
+<tr><td colspan="1" valign="top">ColumnName</td></tr>
+<tr><td colspan="1" valign="top">IsPrimary</td></tr>
+<tr><td colspan="1" valign="top">Views</td><td colspan="1" valign="top">[Same as “Tables” above]</td><td colspan="1" valign="top"></td></tr>
+<tr><td colspan="1" valign="top"><b>SelectedTable</b></td><td colspan="1" valign="top">[Single instance of “Table” model already defined above] – Represents the currently selected table in the TreeView.</td><td colspan="1" valign="top"></td><td colspan="1" valign="top"></td></tr>
+<tr><td colspan="1" valign="top"><b>CustomValues</b></td><td colspan="1" valign="top">A collection of key/value pairs you can define via the UI to be used in your template </td><td colspan="1" valign="top"></td><td colspan="1" valign="top"></td></tr>
+</table>
 
-### Conditional Statements
-
-- **{IF COLUMN.NAME =~ ‘Id’}…{/IF}**
-Condition to test if the name of the column contains a string.
-- **{IF COLUMN.TYPE EQ ‘date|datetime|datetime2’}…{/IF COLUMN.TYPE}**
-Condition to test if the type of the column is one of the specified database types.
-- **{IF COLUMN.TYPE NE ‘date|datetime|datetime2’}…{/IF COLUMN.TYPE}**
-Condition to test if the type of the column is NOT one of the specified database types.
-- **{IF MAP COLUMN.TYPE EQ ‘DateTime’}…{/IF MAP COLUMN.TYPE}**
-Condition to test if the data type mapped from the source database type of the column is one of the specified types.
-- **{IF MAP COLUMN.TYPE NE ‘DateTime’}…{/IF MAP COLUMN.TYPE}**
-Condition to test if the data type mapped from the source database type of the column is NOT one of the specified types.
-- **{IF COLUMN.NULLCHECK NOT NULLABLE}…{/IF COLUMN.NULLCHECK}**
-Condition to test if a column is nullable or not.
-- **{IF COLUMN.LASTCHECK NOT LAST}…{/IF COLUMN.LASTCHECK}**
-Condition to test if it is the last column being processed.
-
-### Custom Values
-
-- **{NAME_OF_YOUR_TAG}**
-Custom Values are Key/Value Pairs that you can define to use in a template.
-
-### Options
-Some of the expressions allow for certain options to modify the output.
-- **{COLUMN.NAME}**, **{DATABASE.NAME}** and custom values let you specify a case conversion. You can choose from any of the following: CAMEL, PASCAL, HUMAN, UNDERSCORE, UPPER, LOWER, HYPHEN, HYPHEN_LOWER, HYPHEN_UPPER. Example:
-    {COLUMN.NAME PASCAL}
-
-- **{TABLE.NAME}** lets you specify multiple options. Here are some examples:
-
-`{TABLE.NAME}`: Simply outputs the name, as it appears in the database
-
-`{TABLE.NAME OPTIONS CASE=PASCAL}`: Converts the name to Pascal case
-
-`{TABLE.NAME OPTIONS CASE=UPPER}`: Converts the name to Upper case
-
-`{TABLE.NAME OPTIONS REPLACE(OldValue,NewValue)}`: An expression that allows you to replace a part of the table name with something. This can be useful if your table names tend to have a prefix. For example: `MyCompany_Sales`. To remove the prefix, use `{TABLE.NAME REPLACE(MyCompany_.,)}`
-
-`{TABLE.NAME OPTIONS SINGULARIZE}`: Will ensure the table's name is singularized. Likewise, using `PLURALIZE` instead will pluralize the name.
-
-Options can be combined, but must remain in the same order.. CASE, then REPLACE, then SINGULARIZE or PLURALIZE. Here's an example using all 3 options:
-`{TABLE.NAME OPTIONS CASE=PASCAL REPLACE(MyCompany_,) SINGULARIZE}`
-
-### Examples
+# Example Snippets
+## Database
+- Output the database name: `{{ Database.Name }}`
+- Iterate over all tables in the selected database:
 
 ```
-using {Namespace}.Data.Domain;
+{% for table in Database.Tables %}
+    [Your Code Here]
+{% endfor %}
+```
+
+## Table
+- Output the table schema: `{{ table.Schema }} or {{ SelectedTable.Schema }}`
+- Output the table name: `{{ table.Name }} or {{ SelectedTable.Name }}`
+- Iterate over all columns in the selected table:
+
+```
+{% for column in table.Columns %}
+[Your Code Here]
+{% endfor %}
+```
+
+Or…
+
+```
+{% for column in SelectedTable.Columns %}
+[Your Code Here]
+{% endfor %}
+```
+
+## Columns
+- Output the column name: `{{ column.Name }}`
+- Output the column type: `{{ column.NativeType }}`
+- Output the mapped column type: `{{ column.DbType | MAP_TYPE }}`
+
+This will output the selected programming language's data type mapped from the source database type. Configurable via the UI.
+
+- Output the column length: `{{ column.Length }}`
+- Output the column default: `{{ column.Default }}`
+- Check if the column is nullable: `{% if column.Nullable %}[Your Code Here]{% endif %}`
+- Check if the column is a primary key: `{% if column.IsPrimaryKey %}[Your Code Here]{% endif %}`
+
+There are more snippets available on the Snippets flyout menu on the UI.
+## Custom Values
+- Your own values can be accessed as follows:
+
+`{{ CustomValues["MyKey"] }}`
+
+## Additional Filters
+The templating language already has built-in functions (known as filters). A simple example of this is downcase, which is used as follows:
+
+`{{ "APPLE" | downcase }}`
+
+The output of which would be apple. More built-in filters can be found at:
+
+[https://shopify.github.io/liquid/basics/introduction/#filters]()
+# Example Template
+## Example 1:
+
+```
+using {{ CustomValues["Namespace"] }}.Data.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace {Namespace}.Data
+namespace {{ CustomValues["Namespace"] }}.Data;
+
+public class ApplicationDbContext : IdentityDbContext
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
-{DATABASE.TABLES}
-        public DbSet<{TABLE.NAME OPTIONS CASE=PASCAL}> {TABLE.NAME OPTIONS CASE=PASCAL} { get; set; }
-{/DATABASE.TABLES}
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-{DATABASE.TABLES}
-            builder.ApplyConfiguration(new {TABLE.NAME OPTIONS CASE=PASCAL}Map());{/DATABASE.TABLES}
-        }
+    }
+{% for table in Database.Tables %}
+    public DbSet<{{ table.Name | PASCAL }}> {{ table.Name | PASCAL }} { get; set; }
+{% endfor %}
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+{% for table in Database.Tables %}
+        builder.ApplyConfiguration(new {{ table.Name | PASCAL }}Map());{% endfor %}
     }
 }
-```
 
 ```
-using System;
+
+## Example 2:
+
+```
+{% assign entityName = SelectedTable.Name | REPLACE: "ABC","_" | PASCAL | SINGULARIZE %}using System;
 using Extenso.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace {Namespace}.Data.Domain
+namespace {{ CustomValues["Namespace"] }}.Data.Domain;
+
+public class {{ entityName }} : IEntity
+{ {% for column in SelectedTable.Columns %}
+    public {{ column.DbType | MAP_TYPE }} {{ column.Name | PASCAL }} { get; set; }
+{% endfor %}
+    public object[] KeyValues => new object[] { {% for column in SelectedTable.Columns %}{% if column.IsPrimaryKey %}{{ column.Name }}{% endif %}{% endfor %} };
+}
+
+public class {{ entityName }}Map : IEntityTypeConfiguration<{{ entityName }}>
 {
-    public class {TABLE.NAME OPTIONS CASE=PASCAL REPLACE(ABC_,) SINGULARIZE} : IEntity
-    {{TABLE.COLUMNS}
-        public {MAP COLUMN.TYPE} {COLUMN.NAME} { get; set; }
-{/TABLE.COLUMNS}
-        #region IEntity Members
-
-        public object[] KeyValues
-        {
-            get { return new object[] { {TABLE.COLUMNS PRIMARY}{COLUMN.NAME}{/TABLE.COLUMNS} }; }
-        }
-
-        #endregion IEntity Members
-    }
-
-    public class {TABLE.NAME OPTIONS CASE=PASCAL}Map : IEntityTypeConfiguration<{TABLE.NAME OPTIONS CASE=PASCAL}>
+    public void Configure(EntityTypeBuilder<{{ entityName }}> builder)
     {
-        public void Configure(EntityTypeBuilder<{TABLE.NAME OPTIONS CASE=PASCAL}> builder)
-        {
-            builder.ToTable("{TABLE.NAME}");
-           {TABLE.COLUMNS PRIMARY} builder.HasKey(m => m.{COLUMN.NAME});{/TABLE.COLUMNS}{TABLE.COLUMNS NOPRIMARY}
-            builder.Property(m => m.{COLUMN.NAME}).HasColumnType("{COLUMN.TYPE}"){IF COLUMN.NULLCHECK NOT NULLABLE}.IsRequired(){/IF COLUMN.NULLCHECK}.HasMaxLength({COLUMN.LENGTH}).IsUnicode(true);{/TABLE.COLUMNS}
-        }
+        builder.ToTable("{{ SelectedTable.Name }}", "{{ SelectedTable.Schema }}");
+        {% for column in SelectedTable.Columns %}
+        {% if column.IsPrimaryKey %}builder.HasKey(m => m.{{ column.Name }});{% endif %}{% unless column.IsPrimaryKey %}builder.Property(m => m.{{ column.Name }}).HasColumnType("{{ column.NativeType }}"){% if column.Nullable %}.IsRequired(){% endif %}{% endunless %}{% if column.Length != null %}.HasMaxLength({{ column.Length }}){% endif %}{% endfor %}
     }
 }
 ```
 
-### Additional Notes:
-- If you name your templates using the `{TABLE.NAME…}` expression, it will automatically generate the correct file name for you as well. Examples:
-```
-{TABLE.NAME OPTIONS CASE=PASCAL}.cs
-{TABLE.NAME OPTIONS CASE=PASCAL}Controller.cs
-```
+## Additional Notes:
+- If you name your templates using the {{ SelectedTable.Name }} expression, it will automatically generate the correct file name for you as well. Examples:
+
+**TODO: In Progress**
 
 ### Future Work:
 
