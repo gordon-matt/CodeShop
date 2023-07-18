@@ -1,6 +1,6 @@
+using CodeShop.Shared.Generator;
 using System.Diagnostics;
 using System.IO;
-using CodeShop.Shared.Generator;
 
 namespace CodeShop.Generator;
 
@@ -9,12 +9,12 @@ namespace CodeShop.Generator;
 /// </summary>
 public class FileGenerator
 {
-    public event EventHandler OnComplete;
+    public delegate void OnFileGenerationCompletedEventHandler();
 
-    public void Generate(TemplateModel model, string inputDir, string outputDir)
+    public static event OnFileGenerationCompletedEventHandler OnFileGenerationCompleted;
+
+    public static void Generate(TemplateModel model, string inputDir, string outputDir)
     {
-        var client = new Client();
-
         var directoryInfo = new DirectoryInfo(inputDir);
         foreach (var fileInfo in directoryInfo.GetFiles())
         {
@@ -25,8 +25,8 @@ public class FileGenerator
                 streamReader.Close();
             }
 
-            string generatedCode = client.Parse(model, fileContent);
-            string fileName = client.Parse(model, fileInfo.Name);
+            string generatedCode = TemplateParser.Parse(model, fileContent);
+            string fileName = TemplateParser.Parse(model, fileInfo.Name.Replace("^", "|"));
 
             try
             {
@@ -39,6 +39,6 @@ public class FileGenerator
             }
         }
 
-        OnComplete?.Invoke(this, new EventArgs());
+        OnFileGenerationCompleted?.Invoke();
     }
 }

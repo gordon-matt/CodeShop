@@ -112,10 +112,7 @@ public partial class SettingsForm : KryptonForm
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Acceptable for WinForms event handlers")]
-    private void btnCancel_Click(object sender, EventArgs e)
-    {
-        Close();
-    }
+    private void btnCancel_Click(object sender, EventArgs e) => Close();
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Acceptable for WinForms event handlers")]
     private void cmbLanguage_SelectedIndexChanged(object sender, EventArgs e)

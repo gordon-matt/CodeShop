@@ -149,7 +149,7 @@ public class {{ entityName }}Map : IEntityTypeConfiguration<{{ entityName }}>
     {
         builder.ToTable("{{ SelectedTable.Name }}", "{{ SelectedTable.Schema }}");
         {% for column in SelectedTable.Columns %}
-        {% if column.IsPrimaryKey %}builder.HasKey(m => m.{{ column.Name }});{% endif %}{% unless column.IsPrimaryKey %}builder.Property(m => m.{{ column.Name }}).HasColumnType("{{ column.NativeType }}"){% if column.Nullable %}.IsRequired(){% endif %}{% endunless %}{% if column.Length != null %}.HasMaxLength({{ column.Length }}){% endif %}{% endfor %}
+        {% if column.IsPrimaryKey %}builder.HasKey(m => m.{{ column.Name }});{% endif %}{% unless column.IsPrimaryKey %}builder.Property(m => m.{{ column.Name }}).HasColumnType("{{ column.NativeType }}"){% if column.Nullable %}.IsRequired(){% endif %}{% endunless %}{% if column.Length != null %}.HasMaxLength({{ column.Length }}){% endif %};{% endfor %}
     }
 }
 ```
@@ -165,3 +165,13 @@ It would be good to have the following work done in future:
 
 - Separate the views from the tables.. example: {VIEW.COLUMNS…}, {VIEW.NAME…}, etc.
 - Support for foreign key info, so that we can generate things like EF Navigation Properties
+- Better UI for db connections
+- Split each db connection type into separate projects
+- Show collection of file templates on UI
+- Import templates
+- Import language
+- Save configuration to a folder (1 main file for connection settings, custom values, etc.. plus separate files for templates, languages etc)
+- Allow rich text boxes to have different language markup to the data mappings language. Example: data mapping can be C#, but we're templating out a Razor file
+  (so want to have HTML as the language used in the rich text box..)
+- Custom snippets?
+- Use ribbn instead of toolstip?

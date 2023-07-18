@@ -34,13 +34,7 @@ public class ProviderFactory
         return connection;
     }
 
-    public IDbDataAdapter CreateDataAdapter()
-    {
-        return DbProviderFactory.CreateDataAdapter();
-    }
+    public IDbDataAdapter CreateDataAdapter() => DbProviderFactory.CreateDataAdapter();
 
-    public IDbDataParameter CreateParameter()
-    {
-        return DbProviderFactory.CreateParameter();
-    }
+    public IDbDataParameter CreateParameter() => DbProviderFactory.CreateParameter();
 }

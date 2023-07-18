@@ -39,7 +39,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            var resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             menuStrip = new MenuStrip();
             mnuFile = new ToolStripMenuItem();
             mnuFileEditConfiguration = new ToolStripMenuItem();
@@ -221,7 +221,7 @@
             // 
             mnuViewTemplate.Image = Resources.Design_32x32;
             mnuViewTemplate.Name = "mnuViewTemplate";
-            mnuViewTemplate.Size = new System.Drawing.Size(180, 22);
+            mnuViewTemplate.Size = new System.Drawing.Size(122, 22);
             mnuViewTemplate.Text = "Template";
             mnuViewTemplate.Click += mnuViewTemplate_Click;
             // 
@@ -229,7 +229,7 @@
             // 
             mnuViewResults.Image = Resources.Code_32x32;
             mnuViewResults.Name = "mnuViewResults";
-            mnuViewResults.Size = new System.Drawing.Size(180, 22);
+            mnuViewResults.Size = new System.Drawing.Size(122, 22);
             mnuViewResults.Text = "Results";
             mnuViewResults.Click += mnuViewResults_Click;
             // 
@@ -267,7 +267,7 @@
             // 
             mnuHelpDocumentation.Image = Resources.Help_32x32;
             mnuHelpDocumentation.Name = "mnuHelpDocumentation";
-            mnuHelpDocumentation.Size = new System.Drawing.Size(193, 22);
+            mnuHelpDocumentation.Size = new System.Drawing.Size(168, 22);
             mnuHelpDocumentation.Text = "Documentation";
             mnuHelpDocumentation.Click += mnuHelpDocumentation_Click;
             // 
@@ -275,7 +275,7 @@
             // 
             mnuHelpAbout.Image = Resources.About_32x32;
             mnuHelpAbout.Name = "mnuHelpAbout";
-            mnuHelpAbout.Size = new System.Drawing.Size(193, 22);
+            mnuHelpAbout.Size = new System.Drawing.Size(168, 22);
             mnuHelpAbout.Text = "About Code Shop";
             mnuHelpAbout.Click += mnuHelpAbout_Click;
             // 
@@ -284,7 +284,7 @@
             mnuHelpAboutHeroicsoft.BackColor = System.Drawing.SystemColors.Control;
             mnuHelpAboutHeroicsoft.Image = Resources.Heroicsoft_Icon;
             mnuHelpAboutHeroicsoft.Name = "mnuHelpAboutHeroicsoft";
-            mnuHelpAboutHeroicsoft.Size = new System.Drawing.Size(193, 22);
+            mnuHelpAboutHeroicsoft.Size = new System.Drawing.Size(168, 22);
             mnuHelpAboutHeroicsoft.Text = "About Heroicsoft";
             mnuHelpAboutHeroicsoft.Click += mnuHelpAboutHeroicsoft_Click;
             // 

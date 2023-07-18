@@ -46,12 +46,6 @@ public partial class Main : KryptonForm
         return true;
     }
 
-    private static Bitmap IconToBitMap(Icon icon)
-    {
-        using var bmp = icon.ToBitmap();
-        return new Bitmap(bmp, new Size(16, 16));
-    }
-
     private static bool IsValidFolder(string folderPath) => !string.IsNullOrEmpty(folderPath) && Directory.Exists(folderPath);
 
     private static KryptonPage NewPage(string name, Control content, Bitmap icon = null)
@@ -136,14 +130,13 @@ public partial class Main : KryptonForm
             }
 
             EnsureResultsFormExists();
-            var client = new Client();
             var model = new TemplateModel
             {
                 Database = selectedTable.ParentDatabase,
                 SelectedTable = selectedTable,
                 CustomValues = CustomValuesControl.CustomValues,
             };
-            resultForm.ContentText = client.Parse(model, templateForm.ContentText);
+            resultForm.ContentText = TemplateParser.Parse(model, templateForm.ContentText);
             workspace.SelectPage(resultPage.UniqueName);
         }
         catch (Exception x)
@@ -163,15 +156,15 @@ public partial class Main : KryptonForm
         {
             try
             {
-                var fileGenerator = new FileGenerator();
                 var model = new TemplateModel
                 {
                     Database = selectedTable.ParentDatabase,
                     SelectedTable = selectedTable,
                     CustomValues = CustomValuesControl.CustomValues,
                 };
-                fileGenerator.OnComplete += fileGenerator_OnComplete;
-                fileGenerator.Generate(model, inputTemplateFolder, outputTemplateFolder);
+
+                FileGenerator.OnFileGenerationCompleted += FileGenerator_OnFileGenerationCompleted;
+                FileGenerator.Generate(model, inputTemplateFolder, outputTemplateFolder);
             }
             catch (Exception x)
             {
@@ -317,16 +310,6 @@ public partial class Main : KryptonForm
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Acceptable for WinForms event handlers")]
-    private void fileGenerator_OnComplete(object sender, EventArgs e)
-    {
-        //MessageBox.Show("File Generation Completed");
-        if (IsValidFolder(outputTemplateFolder))
-        {
-            _ = Process.Start(outputTemplateFolder);
-        }
-    }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Acceptable for WinForms event handlers")]
     private void mnuFileDatabaseConnect_Click(object sender, EventArgs e) => databaseNavigationForm.Connect();
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Acceptable for WinForms event handlers")]
@@ -460,6 +443,15 @@ public partial class Main : KryptonForm
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Acceptable for WinForms event handlers")]
     private void tsBtnSettings_Click(object sender, EventArgs e) => ShowSettings();
+
+    private void FileGenerator_OnFileGenerationCompleted()
+    {
+        //MessageBox.Show("File Generation Completed");
+        if (IsValidFolder(outputTemplateFolder))
+        {
+            _ = Process.Start(outputTemplateFolder);
+        }
+    }
 
     #endregion Event Handlers
 }
