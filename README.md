@@ -94,9 +94,26 @@ The templating language already has built-in functions (known as filters). A sim
 
 `{{ "APPLE" | downcase }}`
 
-The output of which would be apple. More built-in filters can be found at:
+The output of which would be `apple`. More built-in filters can be found at:
 
-[https://shopify.github.io/liquid/basics/introduction/#filters]()
+https://shopify.github.io/liquid/basics/introduction/#filters
+
+In addition to these built-in filters, CodeShop provides the following ones:
+
+- CAMEL: Converts the string to camel case
+- PASCAL: Converts the string to pascal case
+- UNDERSCORE: Replaces each whitespace character with an underscore
+- HUMAN: Humanizes the string with title casing.
+- HYPHEN: Replaces each whitespace character with a hyphen
+- HYPHEN_LOWER: Replaces each whitespace character with a hyphen and converts every character to lower case
+- HYPHEN_UPPER: Replaces each whitespace character with a hyphen and converts every character to upper case
+- PLURALIZE: Pluralizes the string.
+- SINGULARIZE: Singularizes the string.
+- UPPER: Converts the string to upper case. Same as `upcase`
+- LOWER: Converts the string to lower case. Same as `downcase`
+- REPLACE: Replaces a substring with another string. Example: REPLACE: "MyCompany_","". Thus, "MyCompany_Languages" becomes "Languages".
+- MAP_TYPE: Only works with the `DbType` property on a column object. Example: `{{ column.DbType | MAP_TYPE }}`. It will output the mapped data type.. which by default is C#, but can be changed to whatever language you want in the settings.
+
 # Example Template
 ## Example 1:
 
@@ -155,7 +172,21 @@ public class {{ entityName }}Map : IEntityTypeConfiguration<{{ entityName }}>
 ```
 
 ## Additional Notes:
-- If you name your templates using the {{ SelectedTable.Name }} expression, it will automatically generate the correct file name for you as well. Examples:
+- If you name your templates using the {{ SelectedTable.Name }} expression, it will automatically generate the correct file name for you as well. Note that you can still use liquid template filters as well, but because the vertical bar character (`|`) is not allowed in file paths, then you can replace `|` with `^` in the file names and they will be converted back to `|` for processing. Examples:
+
+```
+{{ SelectedTable.Name ^ SINGULARIZE ^ PASCAL }}.cs
+{{ SelectedTable.Name ^ SINGULARIZE ^ PASCAL }}Controller.cs
+{{ SelectedTable.Name ^ PLURALIZE ^ CAMEL }}.js
+```
+
+If your selected table is named, `Person`, the above example templates would result in the following files being generated:
+
+```
+Person.cs
+PersonController.cs
+people.js
+```
 
 **TODO: In Progress**
 
@@ -165,6 +196,7 @@ It would be good to have the following work done in future:
 
 - Separate the views from the tables.. example: {VIEW.COLUMNS…}, {VIEW.NAME…}, etc.
 - Support for foreign key info, so that we can generate things like EF Navigation Properties
+
 - Better UI for db connections
 - Split each db connection type into separate projects
 - Show collection of file templates on UI
@@ -174,4 +206,4 @@ It would be good to have the following work done in future:
 - Allow rich text boxes to have different language markup to the data mappings language. Example: data mapping can be C#, but we're templating out a Razor file
   (so want to have HTML as the language used in the rich text box..)
 - Custom snippets?
-- Use ribbn instead of toolstip?
+- Use ribbon instead of toolstrip?
