@@ -5,7 +5,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F3BDD828-16AF-494D-9746-706822F12BB7}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -13,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeShop.UI", "CodeShop.UI\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeShop.Shared", "CodeShop.Shared\CodeShop.Shared.csproj", "{06E6629D-ECB3-4DF9-96E0-9C15305769D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeShop.Tests", "CodeShop.Tests\CodeShop.Tests.csproj", "{3DE3891B-8697-43AE-A1DE-DD4A471DF869}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeShop.Tests", "CodeShop.Tests\CodeShop.Tests.csproj", "{3DE3891B-8697-43AE-A1DE-DD4A471DF869}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

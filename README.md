@@ -1,4 +1,4 @@
-<img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Logo.png" alt="Logo" />
+<img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Logo.jpg" alt="Logo" />
 
 Code Shop
 ==============
