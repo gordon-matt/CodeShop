@@ -3,15 +3,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+	<Product>CodeShop</Product>
+	<AssemblyTitle>CodeShop</AssemblyTitle>
     <Version>1.0.0</Version>
-    <Company>gordon_matt</Company>
-    <Description>
-		Code Shop is a database centric template based code generator for any text(ascii) programming language like C, PHP, C#, Visual Basic, Java, Perl, Python… Supported databases are SQL Server, MySQL, PostgreSQL and Oracle.
+    <Company>Matt Gordon</Company>
+    <Description>Code Shop is a database centric template based code generator for any text(ascii) programming language like C, PHP, C#, Visual Basic, Java, Perl, Python… Supported databases are SQL Server, MySQL, PostgreSQL and Oracle.
 
-		Author:
-		https://github.com/gordon-matt
+Author:
+https://github.com/gordon-matt
 
-		Icons used can be found at: https://icons8.com</Description>
+Icons used can be found at: https://icons8.com</Description>
     <PackageIcon>Heroicsoft Icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <NeutralLanguage>en-US</NeutralLanguage>

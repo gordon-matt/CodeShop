@@ -62,7 +62,7 @@ partial class AboutWindow
         tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
         tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 48.6413F));
         tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.22826F));
-        tableLayoutPanel.Size = new System.Drawing.Size(903, 408);
+        tableLayoutPanel.Size = new System.Drawing.Size(907, 396);
         tableLayoutPanel.TabIndex = 0;
         // 
         // pbLogo
@@ -80,11 +80,11 @@ partial class AboutWindow
         // lblProductName
         // 
         lblProductName.Dock = DockStyle.Fill;
-        lblProductName.Location = new System.Drawing.Point(304, 0);
+        lblProductName.Location = new System.Drawing.Point(306, 0);
         lblProductName.Margin = new Padding(7, 0, 4, 0);
         lblProductName.MaximumSize = new System.Drawing.Size(0, 20);
         lblProductName.Name = "lblProductName";
-        lblProductName.Size = new System.Drawing.Size(595, 20);
+        lblProductName.Size = new System.Drawing.Size(597, 20);
         lblProductName.TabIndex = 0;
         lblProductName.Text = "Product Name";
         lblProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -92,11 +92,11 @@ partial class AboutWindow
         // lblVersion
         // 
         lblVersion.Dock = DockStyle.Fill;
-        lblVersion.Location = new System.Drawing.Point(304, 40);
+        lblVersion.Location = new System.Drawing.Point(306, 39);
         lblVersion.Margin = new Padding(7, 0, 4, 0);
         lblVersion.MaximumSize = new System.Drawing.Size(0, 20);
         lblVersion.Name = "lblVersion";
-        lblVersion.Size = new System.Drawing.Size(595, 20);
+        lblVersion.Size = new System.Drawing.Size(597, 20);
         lblVersion.TabIndex = 1;
         lblVersion.Text = "Version";
         lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -104,11 +104,11 @@ partial class AboutWindow
         // lblCopyright
         // 
         lblCopyright.Dock = DockStyle.Fill;
-        lblCopyright.Location = new System.Drawing.Point(304, 80);
+        lblCopyright.Location = new System.Drawing.Point(306, 78);
         lblCopyright.Margin = new Padding(7, 0, 4, 0);
         lblCopyright.MaximumSize = new System.Drawing.Size(0, 20);
         lblCopyright.Name = "lblCopyright";
-        lblCopyright.Size = new System.Drawing.Size(595, 20);
+        lblCopyright.Size = new System.Drawing.Size(597, 20);
         lblCopyright.TabIndex = 2;
         lblCopyright.Text = "Copyright";
         lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -116,11 +116,11 @@ partial class AboutWindow
         // lblCompanyName
         // 
         lblCompanyName.Dock = DockStyle.Fill;
-        lblCompanyName.Location = new System.Drawing.Point(304, 120);
+        lblCompanyName.Location = new System.Drawing.Point(306, 117);
         lblCompanyName.Margin = new Padding(7, 0, 4, 0);
         lblCompanyName.MaximumSize = new System.Drawing.Size(0, 20);
         lblCompanyName.Name = "lblCompanyName";
-        lblCompanyName.Size = new System.Drawing.Size(595, 20);
+        lblCompanyName.Size = new System.Drawing.Size(597, 20);
         lblCompanyName.TabIndex = 3;
         lblCompanyName.Text = "Company Name";
         lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,21 +129,22 @@ partial class AboutWindow
         // 
         btnOK.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
         btnOK.DialogResult = DialogResult.Cancel;
-        btnOK.Location = new System.Drawing.Point(800, 366);
+        btnOK.Location = new System.Drawing.Point(804, 354);
         btnOK.Margin = new Padding(4, 3, 4, 3);
         btnOK.Name = "btnOK";
         btnOK.Size = new System.Drawing.Size(99, 39);
         btnOK.TabIndex = 5;
+        btnOK.Values.DropDownArrowColor = System.Drawing.Color.Empty;
         btnOK.Values.Image = Resources.OK_32x32;
         btnOK.Values.Text = "&OK";
         // 
         // rtbDescription
         // 
         rtbDescription.Dock = DockStyle.Fill;
-        rtbDescription.Location = new System.Drawing.Point(300, 163);
+        rtbDescription.Location = new System.Drawing.Point(302, 159);
         rtbDescription.Name = "rtbDescription";
         rtbDescription.ReadOnly = true;
-        rtbDescription.Size = new System.Drawing.Size(600, 190);
+        rtbDescription.Size = new System.Drawing.Size(602, 184);
         rtbDescription.TabIndex = 4;
         rtbDescription.Text = "Description";
         rtbDescription.LinkClicked += rtbDescription_LinkClicked;
@@ -153,7 +154,7 @@ partial class AboutWindow
         AcceptButton = btnOK;
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new System.Drawing.Size(923, 428);
+        ClientSize = new System.Drawing.Size(927, 416);
         Controls.Add(tableLayoutPanel);
         FormBorderStyle = FormBorderStyle.FixedDialog;
         Margin = new Padding(4, 3, 4, 3);

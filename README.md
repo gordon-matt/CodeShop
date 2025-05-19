@@ -208,3 +208,6 @@ It would be good to have the following work done in future:
 
 ## Credits
 
+The original idea for this project came from this tool: https://github.com/VientoDigital/codegenerator.
+I worked a lot on improving that to what it is today, but eventually decided to go ahead and rewrite it to
+use the liquid templating engine instead of the custom one that was used in that project.

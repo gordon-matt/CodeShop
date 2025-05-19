@@ -33,6 +33,10 @@ public partial class Main : KryptonForm
         InitializeComponent();
         InitializeControls();
         //CheckForUpdates(); // Commented out, as no longer working
+
+        // Ignore for now until there's a website.
+        mnuHelpAboutHeroicsoft.Visible = false;
+        tsBtnAboutHeroicsoft.Visible = false;
     }
 
     private static bool EnsureTableSelected()
