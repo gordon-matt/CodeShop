@@ -174,7 +174,6 @@ public class ConnectionForm : KryptonForm
         // 
         // btnTestConnection
         // 
-        btnTestConnection.CornerRoundingRadius = -1F;
         btnTestConnection.Location = new System.Drawing.Point(10, 126);
         btnTestConnection.Name = "btnTestConnection";
         btnTestConnection.Size = new System.Drawing.Size(153, 43);
@@ -185,7 +184,6 @@ public class ConnectionForm : KryptonForm
         // 
         // cmbProviderType
         // 
-        cmbProviderType.CornerRoundingRadius = -1F;
         cmbProviderType.DropDownStyle = ComboBoxStyle.DropDownList;
         cmbProviderType.DropDownWidth = 256;
         cmbProviderType.IntegralHeight = false;
@@ -197,7 +195,6 @@ public class ConnectionForm : KryptonForm
         // 
         // btnConnect
         // 
-        btnConnect.CornerRoundingRadius = -1F;
         btnConnect.Location = new System.Drawing.Point(170, 126);
         btnConnect.Name = "btnConnect";
         btnConnect.Size = new System.Drawing.Size(154, 43);
@@ -208,7 +205,6 @@ public class ConnectionForm : KryptonForm
         // 
         // cmbConnectionString
         // 
-        cmbConnectionString.CornerRoundingRadius = -1F;
         cmbConnectionString.DropDownWidth = 522;
         cmbConnectionString.IntegralHeight = false;
         cmbConnectionString.Location = new System.Drawing.Point(180, 43);
@@ -218,7 +214,6 @@ public class ConnectionForm : KryptonForm
         // 
         // btnCancel
         // 
-        btnCancel.CornerRoundingRadius = -1F;
         btnCancel.DialogResult = DialogResult.Cancel;
         btnCancel.Location = new System.Drawing.Point(334, 126);
         btnCancel.Name = "btnCancel";

@@ -72,7 +72,6 @@
             // 
             // btnRemove
             // 
-            btnRemove.CornerRoundingRadius = -1F;
             btnRemove.Location = new System.Drawing.Point(532, 8);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new System.Drawing.Size(88, 40);
@@ -83,7 +82,6 @@
             // 
             // btnAdd
             // 
-            btnAdd.CornerRoundingRadius = -1F;
             btnAdd.Location = new System.Drawing.Point(438, 8);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new System.Drawing.Size(88, 40);
@@ -102,7 +100,6 @@
             // 
             // cmbLanguage
             // 
-            cmbLanguage.CornerRoundingRadius = -1F;
             cmbLanguage.DropDownWidth = 354;
             cmbLanguage.IntegralHeight = false;
             cmbLanguage.Location = new System.Drawing.Point(78, 16);
@@ -134,7 +131,6 @@
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancel.CornerRoundingRadius = -1F;
             btnCancel.Location = new System.Drawing.Point(679, 11);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(120, 42);
@@ -146,7 +142,6 @@
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSave.CornerRoundingRadius = -1F;
             btnSave.Location = new System.Drawing.Point(805, 11);
             btnSave.Name = "btnSave";
             btnSave.Size = new System.Drawing.Size(120, 42);

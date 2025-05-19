@@ -128,7 +128,6 @@ partial class AboutWindow
         // btnOK
         // 
         btnOK.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-        btnOK.CornerRoundingRadius = -1F;
         btnOK.DialogResult = DialogResult.Cancel;
         btnOK.Location = new System.Drawing.Point(800, 366);
         btnOK.Margin = new Padding(4, 3, 4, 3);

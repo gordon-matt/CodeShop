@@ -37,7 +37,6 @@
             // btnOK
             // 
             btnOK.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnOK.CornerRoundingRadius = -1F;
             btnOK.Location = new System.Drawing.Point(492, 41);
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(108, 36);
@@ -49,7 +48,6 @@
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCancel.CornerRoundingRadius = -1F;
             btnCancel.Location = new System.Drawing.Point(378, 41);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(108, 36);

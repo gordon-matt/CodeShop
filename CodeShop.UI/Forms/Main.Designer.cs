@@ -290,7 +290,7 @@
             // 
             // kryptonManager
             // 
-            kryptonManager.GlobalPaletteMode = PaletteModeManager.Office365Silver;
+            kryptonManager.GlobalPaletteMode = PaletteMode.Microsoft365Silver;
             // 
             // kryptonDockableWorkspace
             // 

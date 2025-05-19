@@ -63,7 +63,6 @@ public class DirectorySelectionWindow : KryptonForm
         // btnBrowseTemplatesDirectory
         // 
         btnBrowseTemplatesDirectory.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        btnBrowseTemplatesDirectory.CornerRoundingRadius = -1F;
         btnBrowseTemplatesDirectory.Location = new System.Drawing.Point(563, 25);
         btnBrowseTemplatesDirectory.Name = "btnBrowseTemplatesDirectory";
         btnBrowseTemplatesDirectory.Size = new System.Drawing.Size(34, 34);
@@ -75,7 +74,6 @@ public class DirectorySelectionWindow : KryptonForm
         // btnBrowseOutputDirectory
         // 
         btnBrowseOutputDirectory.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        btnBrowseOutputDirectory.CornerRoundingRadius = -1F;
         btnBrowseOutputDirectory.Location = new System.Drawing.Point(563, 84);
         btnBrowseOutputDirectory.Name = "btnBrowseOutputDirectory";
         btnBrowseOutputDirectory.Size = new System.Drawing.Size(34, 34);
@@ -102,7 +100,6 @@ public class DirectorySelectionWindow : KryptonForm
         // 
         // btnOK
         // 
-        btnOK.CornerRoundingRadius = -1F;
         btnOK.Location = new System.Drawing.Point(163, 135);
         btnOK.Name = "btnOK";
         btnOK.Size = new System.Drawing.Size(108, 42);
@@ -114,7 +111,6 @@ public class DirectorySelectionWindow : KryptonForm
         // btnCancel
         // 
         btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        btnCancel.CornerRoundingRadius = -1F;
         btnCancel.DialogResult = DialogResult.Cancel;
         btnCancel.Location = new System.Drawing.Point(445, 135);
         btnCancel.Name = "btnCancel";
