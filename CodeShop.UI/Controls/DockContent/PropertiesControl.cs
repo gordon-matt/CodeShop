@@ -1,4 +1,6 @@
-﻿namespace CodeShop.UI;
+﻿using System.ComponentModel;
+
+namespace CodeShop.UI;
 
 public partial class PropertiesControl : UserControl
 {
@@ -7,6 +9,7 @@ public partial class PropertiesControl : UserControl
         InitializeComponent();
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public object SelectedObject
     {
         get => (Table)propertyGrid.SelectedObject;

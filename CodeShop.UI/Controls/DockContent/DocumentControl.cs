@@ -1,4 +1,6 @@
-﻿namespace CodeShop.UI;
+﻿using System.ComponentModel;
+
+namespace CodeShop.UI;
 
 public partial class DocumentControl : UserControl
 {
@@ -32,12 +34,14 @@ public partial class DocumentControl : UserControl
 
     public int SelectionStart => fctDocument.SelectionStart;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public FastColoredTextBoxNS.Language Language
     {
         get => fctDocument.Language;
         set => fctDocument.Language = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string ContentText
     {
         get => fctDocument.Text;

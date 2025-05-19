@@ -39,6 +39,7 @@ public partial class NavigatorControl : UserControl
     }
 
     [Browsable(true), Category("Navigator")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string ConnectionString
     {
         get => Server.ConnectionString;
@@ -46,6 +47,7 @@ public partial class NavigatorControl : UserControl
     }
 
     [Browsable(true), Category("Navigator")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DataSource ProviderType
     {
         get => Server.ProviderType;

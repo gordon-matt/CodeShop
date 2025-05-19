@@ -1,4 +1,6 @@
-﻿namespace CodeShop.UI;
+﻿using System.ComponentModel;
+
+namespace CodeShop.UI;
 
 public partial class ResultControl : UserControl
 {
@@ -30,12 +32,14 @@ public partial class ResultControl : UserControl
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public FastColoredTextBoxNS.Language Language
     {
         get => fctResult.Language;
         set => fctResult.Language = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string ContentText
     {
         get => fctResult.Text;

@@ -188,8 +188,6 @@ PersonController.cs
 people.js
 ```
 
-**TODO: In Progress**
-
 ### Future Work:
 
 It would be good to have the following work done in future:
@@ -207,3 +205,6 @@ It would be good to have the following work done in future:
   (so want to have HTML as the language used in the rich text box..)
 - Custom snippets?
 - Use ribbon instead of toolstrip?
+
+## Credits
+
