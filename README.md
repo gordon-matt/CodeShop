@@ -6,11 +6,11 @@ Code Shop
 Code Shop is a database centric template based code generator for any text(ascii) programming language like C, PHP, C#, Visual Basic, Java, Perl, Python… Supported databases are SQL Server, MySQL, PostgreSQL and Oracle.
 
 ## Screenshots
-#### Simple Template:
-<img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Screenshots/Simple.PNG" alt="Simple Template" />
+#### Example Template:
+<img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Screenshots/Example.PNG" alt="Example Template" />
 
 #### Results:
-<img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Screenshots/Simple_Results.PNG" alt="Simple Template Results" />
+<img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Screenshots/Example_Results.PNG" alt="Example Template Results" />
 
 Documentation
 # Intro
