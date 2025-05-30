@@ -1,3 +1,5 @@
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=gordon_matt%40live%2ecom&lc=AU&currency_code=AUD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+
 <img src="https://github.com/gordon-matt/CodeShop/blob/main/Misc/Logo.jpg" alt="Logo" />
 
 Code Shop
@@ -211,3 +213,11 @@ It would be good to have the following work done in future:
 The original idea for this project came from this tool: https://github.com/VientoDigital/codegenerator.
 I worked a lot on improving that to what it is today, but eventually decided to go ahead and rewrite it to
 use the liquid templating engine instead of the custom one that was used in that project.
+
+## Donate
+If you find this project helpful, consider buying me a cup of coffee.
+
+[![PayPal](https://img.shields.io/badge/PayPal-003087?logo=paypal&logoColor=fff)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=gordon_matt%40live%2ecom&lc=AU&currency_code=AUD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+[![Bitcoin](https://img.shields.io/badge/Bitcoin-FF9900?logo=bitcoin&logoColor=white)](bitcoin:1EeDfbcqoEaz6bbcWsymwPbYv4uyEaZ3Lp)
+[![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?logo=ethereum&logoColor=white)](ethereum:0x277552efd6ea9ca9052a249e781abf1719ea9414)
+[![Litecoin](https://img.shields.io/badge/Litecoin-A6A9AA?logo=litecoin&logoColor=white)](litecoin:LRUP8hukWGXRrcPK6Tm7iUp9vPvnNNt3uz)
