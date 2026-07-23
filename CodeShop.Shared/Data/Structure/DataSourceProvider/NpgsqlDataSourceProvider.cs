@@ -14,16 +14,22 @@ public class NpgsqlDataSourceProvider : BaseDataSourceProvider<NpgsqlConnection>
     protected override IEnumerable<Table> GetTableSchema(Database database, ProviderFactory providerFactory)
     {
         var schemas = connection.GetSchemaNames();
+        var tableNames = connection.GetTableNames(includeViews: false)
+            .Select(x => new
+            {
+                Schema = x.Split('.')[0],
+                Name = x.Split('.')[1]
+            });
 
         var tables = new List<Table>();
         foreach (string schema in schemas)
         {
-            var tableNames = connection.GetTableNames(includeViews: false, schema: schema);
-            tables.AddRange(tableNames.Select(x => new Table
+            var schemaTables = tableNames.Where(x => x.Schema == schema);
+            tables.AddRange(schemaTables.Select(x => new Table
             {
                 ParentDatabase = database,
                 Schema = schema,
-                Name = x
+                Name = x.Name
             }));
         }
 
@@ -33,16 +39,22 @@ public class NpgsqlDataSourceProvider : BaseDataSourceProvider<NpgsqlConnection>
     protected override IEnumerable<Table> GetViewSchema(Database database, ProviderFactory providerFactory)
     {
         var schemas = connection.GetSchemaNames();
+        var viewNames = connection.GetViewNames()
+            .Select(x => new
+            {
+                Schema = x.Split('.')[0],
+                Name = x.Split('.')[1]
+            });
 
         var views = new List<Table>();
         foreach (string schema in schemas)
         {
-            var viewNames = connection.GetViewNames(schema: schema);
-            views.AddRange(viewNames.Select(x => new Table
+            var schemaViews = viewNames.Where(x => x.Schema == schema);
+            views.AddRange(schemaViews.Select(x => new Table
             {
                 ParentDatabase = database,
                 Schema = schema,
-                Name = x
+                Name = x.Name
             }));
         }
 

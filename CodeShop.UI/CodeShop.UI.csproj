@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
 	<Product>CodeShop</Product>
 	<AssemblyTitle>CodeShop</AssemblyTitle>
@@ -34,7 +34,7 @@ Icons used can be found at: https://icons8.com</Description>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FastColoredTextBox.Net6" Version="1.0.0" />
-    <PackageReference Include="Krypton.Docking" Version="95.25.4.111" />
+    <PackageReference Include="Krypton.Docking" Version="95.25.10.293" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodeShop.Shared\CodeShop.Shared.csproj" />

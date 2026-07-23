@@ -1,0 +1,18 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="AutomatedDebug" />
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="CodeShop.Shared/CodeShop.Shared.csproj">
+    <BuildType Solution="AutomatedDebug|*" Project="Debug" />
+  </Project>
+  <Project Path="CodeShop.Tests/CodeShop.Tests.csproj">
+    <BuildType Solution="AutomatedDebug|*" Project="Debug" />
+  </Project>
+  <Project Path="CodeShop.UI/CodeShop.UI.csproj" />
+</Solution>
